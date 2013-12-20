@@ -1,12 +1,12 @@
 [submodule "shiboken"]
 	path = shiboken
-	url = git://github.com/PySide/Shiboken.git
+	url = git://gitorious.org/pyside/shiboken.git
 [submodule "pyside"]
 	path = pyside
-	url = git://github.com/PySide/PySide.git
+	url = git://gitorious.org/pyside/pyside.git
 [submodule "pyside-tools"]
 	path = pyside-tools
-	url = git://github.com/PySide/Tools.git
+	url = git://gitorious.org/pyside/pyside-tools.git
 [submodule "mobility"]
 	path = mobility
-	url = https://github.com/PySide/Mobility.git
+	url = git://gitorious.org/pyside/pyside-mobility.git
