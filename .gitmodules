@@ -1,9 +1,3 @@
-[submodule "apiextractor"]
-	path = apiextractor
-	url = git://github.com/PySide/Apiextractor.git
-[submodule "generatorrunner"]
-	path = generatorrunner
-	url = git://github.com/PySide/Generatorrunner.git
 [submodule "shiboken"]
 	path = shiboken
 	url = git://github.com/PySide/Shiboken.git
