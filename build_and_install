@@ -15,15 +15,7 @@ cat <<EOF
 EOF
 
 
-alldirs=("shiboken" "pyside" "pyside-tools")
-
-if [ $# == 0 ] ; then
-    dirs=("${alldirs[@]}")
-else
-    dirs=("$@")
-fi
-
-for d in "${dirs[@]}" ; do
+for d in shiboken pyside pyside-tools; do
     rm -rf "$d/build"
     mkdir -p "$d/build"
     (

@@ -52,10 +52,6 @@ Build and install
     environment variable QT_SDK_HOME - this variable needs to be set before
     "environment.sh" is sourced, and before "build_and_install" is run.
 
-    To build Qt Mobility bindings (or to rebuild a specific module), pass
-    the module names you want to build as command line arguments, e.g.:
-
-    ./build_and_install mobility
 
 Python 3 Support
 ================

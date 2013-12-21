@@ -7,6 +7,3 @@
 [submodule "pyside-tools"]
 	path = pyside-tools
 	url = git://gitorious.org/pyside/pyside-tools.git
-[submodule "mobility"]
-	path = mobility
-	url = git://gitorious.org/pyside/pyside-mobility.git
