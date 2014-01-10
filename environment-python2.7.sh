@@ -19,31 +19,42 @@ if [[ -e $PYTHON_PREFIX ]]; then
     echo "Python installation prefix: $PYTHON_PREFIX"
 else
     echo 'Python installation prefix not found.'
-    return
-fi
-
-# Find python library file
-PYTHON_STATIC_LIB_FILE="$PYTHON_PREFIX/lib/python2.7/config/libpython2.7.a"
-PYTHON_DYN_LIB_FILE="$PYTHON_PREFIX/lib/python2.7/config/libpython2.7.so"
-if [[ -e $PYTHON_DYN_LIB_FILE ]]; then
-    echo "Python library file: $PYTHON_DYN_LIB_FILE"
-    PYTHON_LIBRARY_FILE=$PYTHON_DYN_LIB_FILE
-elif [[ -e $PYTHON_STATIC_LIB_FILE ]]; then
-    echo "Python library file: $PYTHON_STATIC_LIB_FILE (Warning: static library)"
-    PYTHON_LIBRARY_FILE=$PYTHON_STATIC_LIB_FILE
-else
-    echo "Error finding python library file."
-    return
+    exit 1
 fi
 
 # Find python include directory
 PYTHON_INCLUDE_DIR="$PYTHON_PREFIX/include/python2.7"
-if [[ -e $PYTHON_INCLUDE_DIR ]]; then
+if [[ -d $PYTHON_INCLUDE_DIR ]]; then
     echo "Python include directory: $PYTHON_INCLUDE_DIR"
 else
     echo 'Error finding python include directory.'
-    return
+    exit 1
 fi
+
+# -L vs. -h ?
+# If is a symbolic link
+if [[ -L $PYTHON_INCLUDE_DIR ]]; then
+    PYTHON_LIBRARY_PREFIX=`readlink -f $PYTHON_INCLUDE_DIR/../..`
+else
+    PYTHON_LIBRARY_PREFIX=$PYTHON_PREFIX
+fi
+
+echo "Library prefix is: $PYTHON_LIBRARY_PREFIX"
+
+PYTHON_DYN_LIB_FILE="$PYTHON_LIBRARY_PREFIX/lib/libpython2.7.so" # (pyenv)
+PYTHON_DYN_LIB_FILE_TWO="$PYTHON_LIBRARY_PREFIX/lib/python2.7/config/libpython2.7.so" # Did this ever work? YEP! (System)
+
+# Find python library file
+if [[ -e $PYTHON_DYN_LIB_FILE ]]; then
+    PYTHON_LIBRARY_FILE=$PYTHON_DYN_LIB_FILE
+elif [[ -e $PYTHON_DYN_LIB_FILE_TWO ]]; then
+    PYTHON_LIBRARY_FILE=$PYTHON_DYN_LIB_FILE_TWO
+else
+    echo "Error finding python library file."
+    exit 1
+fi
+
+echo "Python library file: $PYTHON_LIBRARY_FILE"
 
 echo 'Done.'
 
