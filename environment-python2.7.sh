@@ -33,5 +33,5 @@ fi
 
 echo "Python library file: $PYTHON_LIBRARY"
 
-export $PYTHON_INCLUDE_DIR
-export $PYTHON_LIBRARY
+export PYTHON_INCLUDE_DIR
+export PYTHON_LIBRARY
