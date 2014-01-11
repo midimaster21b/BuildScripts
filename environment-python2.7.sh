@@ -23,13 +23,15 @@ fi
 PYTHON_DYN_LIB_FILE="$PYTHON_PREFIX/lib/libpython2.7.so" # (pyenv)
 PYTHON_DYN_LIB_FILE_TWO="$PYTHON_PREFIX/lib/python2.7/config/libpython2.7.so" # Did this ever work? YEP! (System)
 if [[ -e $PYTHON_DYN_LIB_FILE ]]; then
-    PYTHON_LIBRARY_FILE=$PYTHON_DYN_LIB_FILE
+    PYTHON_LIBRARY=$PYTHON_DYN_LIB_FILE
 elif [[ -e $PYTHON_DYN_LIB_FILE_TWO ]]; then
-    PYTHON_LIBRARY_FILE=$PYTHON_DYN_LIB_FILE_TWO
+    PYTHON_LIBRARY=$PYTHON_DYN_LIB_FILE_TWO
 else
     echo 'Error finding python library file.'
     exit 1
 fi
 
-echo "Python library file: $PYTHON_LIBRARY_FILE"
-echo 'Done.'
+echo "Python library file: $PYTHON_LIBRARY"
+
+export $PYTHON_INCLUDE_DIR
+export $PYTHON_LIBRARY
