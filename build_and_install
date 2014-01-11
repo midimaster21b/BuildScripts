@@ -1,28 +1,12 @@
 #!/usr/bin/env bash
 
-source environment.sh
-
-cat <<EOF
-
-    === PySide BuildScripts Configuration ===
-
-    Installation prefix:    $PREFIX
-    Build type:             $BUILD_TYPE
-    Target Python version:  $PYTHONXY
-    Build for Python 3:     $PYSIDE_BUILDSCRIPTS_USE_PYTHON3
-
-
-EOF
-
-
 for d in shiboken pyside pyside-tools; do
     rm -rf "$d/build"
     mkdir -p "$d/build"
 
     source environment-python2.7.sh
+    source environment.sh
     (
-	source environment.sh
-
 	if [ "`uname -s`" == "Darwin" ]; then
 	    # When running on Mac OS X, we need to specify the
 	    # Qt include dir for the header files to be found.
