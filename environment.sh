@@ -13,23 +13,14 @@ if [ -z "$PYSIDE_BUILDSCRIPTS_USE_PYTHON3" ]; then
   export PYSIDE_BUILDSCRIPTS_USE_PYTHON3=no
 fi
 
+export PREFIX=$HOME/pyside
+PYTHONXY='python2.7'
 
-
-if [ "$PYSIDE_BUILDSCRIPTS_USE_PYTHON3" = "yes" ]; then
-    # Get the Python version as "pythonx.y", e.g. "python2.6"
-    PYTHONXY=`python3 -V 2>&1 | sed -e 's/Python \(3\.[0-9]*\).*/python\1/'`
-    export PYSIDESANDBOXPATH=$HOME/pkg/pyside-sandbox-python3
-else
-    # Get the Python version as "pythonx.y", e.g. "python2.6"
-    PYTHONXY=`python -V 2>&1 | sed -e 's/Python \(2\.[0-9]*\).*/python\1/'`
-    export PYSIDESANDBOXPATH=$HOME/pkg/pyside-sandbox
-fi
-
-export PATH=$PYSIDESANDBOXPATH/bin:$PATH
-export PYTHONPATH=$PYSIDESANDBOXPATH/lib/$PYTHONXY/site-packages:$PYSIDESANDBOXPATH/lib64/$PYTHONXY/site-packages:$PYTHONPATH
-export LD_LIBRARY_PATH=$PYSIDESANDBOXPATH/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$PYSIDESANDBOXPATH/lib/pkgconfig:$PKG_CONFIG_PATH
-export DYLD_LIBRARY_PATH=$PYSIDESANDBOXPATH/lib:$DYLD_LIBRARY_PATH
+export PATH=$PREFIX/bin:$PATH
+export PYTHONPATH=$PREFIX/lib/$PYTHONXY/site-packages:$PREFIX/lib64/$PYTHONXY/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
+export DYLD_LIBRARY_PATH=$PREFIX/lib:$DYLD_LIBRARY_PATH
 
 # If you want to use Qt Simulator, uncomment following line and set the
 # enviroment variable $QT_SDK_HOME to the directory that contains the Qt

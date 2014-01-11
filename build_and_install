@@ -6,7 +6,7 @@ cat <<EOF
 
     === PySide BuildScripts Configuration ===
 
-    Installation prefix:    $PYSIDESANDBOXPATH
+    Installation prefix:    $PREFIX
     Build type:             $BUILD_TYPE
     Target Python version:  $PYTHONXY
     Build for Python 3:     $PYSIDE_BUILDSCRIPTS_USE_PYTHON3
@@ -42,7 +42,7 @@ for d in shiboken pyside pyside-tools; do
 	fi
 
 	cd "$d/build"
-	cmake .. -DCMAKE_INSTALL_PREFIX=$PYSIDESANDBOXPATH \
+	cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX \
 		 -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
 		 -DENABLE_ICECC=0 \
 		 $PYSIDE_BS_CMAKE_FLAGS \
