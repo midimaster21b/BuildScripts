@@ -33,5 +33,16 @@ fi
 
 echo "Python library file: $PYTHON_LIBRARY"
 
+# Find PySide installation prefix
+PREFIX=$(pyenv prefix 2>/dev/null || which python 2>/dev/null)
+PREFIX=${PYTHON_PREFIX%%/bin/python}
+if [[ -n $PREFIX ]]; then
+    echo "PySide installation prefix: $PREFIX"
+else
+    echo 'Error finding PySide installation prefix.'
+    exit 1
+fi
+
+export PREFIX
 export PYTHON_INCLUDE_DIR
 export PYTHON_LIBRARY

@@ -1,21 +1,11 @@
 #!/bin/sh
+# TODO: Allow debug build type... 'export BUILD_TYPE=Debug'
+export BUILD_TYPE=Release
 
-# To build a Debug release, make sure to have the debugging version
-# of Python installed:
-#export BUILD_TYPE=Debug
-if [ -z "$BUILD_TYPE" ]; then
-  export BUILD_TYPE=Release
-fi
+# TODO: Implement support for python 3
+export PYTHONXY='python2.7'
 
-# Whenever to build Python 3 or Python 2 version:
-#export PYSIDE_BUILDSCRIPTS_USE_PYTHON3=yes
-if [ -z "$PYSIDE_BUILDSCRIPTS_USE_PYTHON3" ]; then
-  export PYSIDE_BUILDSCRIPTS_USE_PYTHON3=no
-fi
-
-export PREFIX=$HOME/pyside
-PYTHONXY='python2.7'
-
+# Required environment variables
 export PATH=$PREFIX/bin:$PATH
 export PYTHONPATH=$PREFIX/lib/$PYTHONXY/site-packages:$PREFIX/lib64/$PYTHONXY/site-packages:$PYTHONPATH
 export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
