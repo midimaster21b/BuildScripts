@@ -35,6 +35,7 @@ echo "Python library file: $PYTHON_LIBRARY"
 
 export PREFIX=~/pyside
 export PYTHON_INCLUDE_DIR
+export PYTHON_INCLUDE_DIRS=PYTHON_INCLUDE_DIR
 export PYTHON_LIBRARY
 
 # TODO: Allow debug build type... 'export BUILD_TYPE=Debug'
