@@ -4,7 +4,7 @@ for d in shiboken pyside pyside-tools; do
     rm -rf "$d/build"
     mkdir -p "$d/build"
 
-    source environment-python2.7.sh
+    # source environment-python2.7.sh
     source environment.sh
     (
 	if [ "`uname -s`" == "Darwin" ]; then
